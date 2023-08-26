@@ -16,10 +16,13 @@ let input = {
 
 const contracts = path.join(__dirname, "../contracts");
 
-fs.readdirSync(contracts).forEach((contract) => {
-  const source = fs.readFileSync(path.join(contracts, contract));
-  input.sources[contract] = { content: source.toString() };
-});
+fs.readdirSync(contracts)
+  .filter((a) => a.endsWith(".sol"))
+  .forEach((contract) => {
+    console.log(contract);
+    const source = fs.readFileSync(path.join(contracts, contract));
+    input.sources[contract] = { content: source.toString() };
+  });
 
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
 
