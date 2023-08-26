@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import { initHash } from './Leaf.sol';
 
-contract Proxy {
+contract Tree {
     address immutable DEPLOYER;
 
     constructor(address deployer) {
