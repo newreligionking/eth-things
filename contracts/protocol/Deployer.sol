@@ -6,10 +6,10 @@ import { Leaf } from "./Leaf.sol";
 
 contract Deployer is IDeployer {
     address immutable owner;
-
+    address immutable creator;
     bytes _code;
 
-    constructor(address _owner) { owner = _owner; }
+    constructor(address _owner) { owner = _owner; creator = msg.sender; }
 
     function deploy(bytes4 selector, bytes calldata code) external payable returns (address created) {
         require(msg.sender == owner, "Not Owner");
