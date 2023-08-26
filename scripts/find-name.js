@@ -16,5 +16,5 @@ const ethers = require("ethers");
     new_name = `add_${String(Math.random()).slice(3)}(uint256,uint256)`;
     new_selector = ethers.id(new_name).slice(0, 10);
   }
-  console.log({ new_name, new_selector });
+  console.log({ new_name, new_selector, done: true });
 })();
