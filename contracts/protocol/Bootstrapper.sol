@@ -12,5 +12,6 @@ contract Bootstrapper {
         Proxy proxy = new Proxy(address(deployer));
         (bool success, bytes memory output) = address(proxy).delegatecall(abi.encodeWithSelector(selector, x, y));
         require(success, string(output));
+        require(uint256(bytes32(output)) == x + y, "Doesn't add up");
     }
 }
