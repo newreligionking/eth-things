@@ -30,7 +30,9 @@ contract Withdraw {
     };
 }
 ```
+
 The above contracts when deployed with this setup gives the following interface at the address of the proxy:
+
 ```sol
 interface IDApp {
     function withdraw(uint256 amount) external returns (uint256 bal);
@@ -39,6 +41,7 @@ interface IDApp {
 ```
 
 Now to upgrade, you write updates like these:
+
 ```sol
 contract Deposit_v2 {
     function deposit_v2(uint256 amount) external payable returns (uint256 bal) {
@@ -46,9 +49,11 @@ contract Deposit_v2 {
     }
 }
 ```
+
 After the new contract is deployed, calls to deploy_v2 will be routed to the newer contract. Note the difference in selectors, we never update the actual function body we create new functions.
 
 The old functions are still available, so it's your responsibility to update the frontend. The interface becomes:
+
 ```sol
 interface IDapp {
     function withdraw(uint256 amount) external returns (uint256 bal);
@@ -56,3 +61,7 @@ interface IDapp {
     function deposit_v2(uint256 amount) external payable returns (uint256 bal);
 }
 ```
+
+# TODO
+
+log new selector/implementation pairs
