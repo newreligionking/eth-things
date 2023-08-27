@@ -19,6 +19,34 @@ interface IDeployer {
     function deploy(DeployParams calldata params) external payable returns (address created);
 }
 contract Leaf {
+    /**
+        6020 0x20
+        3d 0 0x20
+        3d 0 0 0x20
+        3d 0 0 0 0x20
+        33 caller 0 0 0 0x20
+        5a gas caller 0 0 0 0x20
+        fa success
+        60jj jj success
+        57
+        3d 0
+        51 impl
+        80 impl impl
+        15 iz_impl impl
+        60jj jj iz_impl impl
+        57 impl
+        80 impl impl
+        3b csize impl
+        3d 0 csize impl
+        81 csize 0 csize impl
+        3d 0 csize 0 csize impl
+        3d 0 0 csize 0 csize impl
+        85 impl 0 0 csize 0 csize impl
+        3c 0 csize impl
+        f3
+        5b
+        fe
+     */
     constructor() payable {
         IDeployer deployer = IDeployer(msg.sender);
         address implementation = deployer.implementation();
